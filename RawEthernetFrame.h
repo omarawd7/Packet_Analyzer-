@@ -15,6 +15,7 @@ protected:
 	std::string Payload;
 
 public:
+    RawEhternetFrame();
 	std::string GetCRC();
 	void SetCRC();
 	std::string GetPreamble();

@@ -1,5 +1,9 @@
 #include "RawEthernetFrame.h"
 
+RawEhternetFrame::RawEhternetFrame()
+{
+}
+
 std::string RawEhternetFrame::GetCRC()
 {
 	return std::string();

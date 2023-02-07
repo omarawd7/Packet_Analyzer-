@@ -1,5 +1,9 @@
 #include "eCPRI.h"
 
+eCPRI::eCPRI()
+{
+}
+
 std::string eCPRI::GetConcatenationIndicator()
 {
 	return std::string();

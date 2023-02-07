@@ -11,6 +11,7 @@ private:
 	std::string RTC_ID;
 	std::string Sequence_ID;
 public:
+    eCPRI();
 	std::string GetConcatenationIndicator();
 	void SetConcatenationIndicator();
 	std::string GetMessageType();
