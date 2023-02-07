@@ -4,7 +4,6 @@ Parser::Parser(Reader Data)
 {
 	NumberOfPackets = Data.NumberOfPackets;
 	Data = this->Data;
-
 }
 
 void Parser::Parse()
@@ -13,19 +12,16 @@ void Parser::Parse()
 	{
 		std::string Packet = Data.Input[i];
 		Type = GetType(Packet);
-		int indexOfThePacket=i;
+		int indexOfThePacket = i;
 		if (Type == eCPRI_Type)
 		{
-            
-            Parse_eCPRI(Packet,indexOfThePacket);
+			Parse_RawEthernetFrames(Packet, indexOfThePacket);
+			Parse_eCPRI(Packet, indexOfThePacket);
 		}
 		else if (Type == RawEhternetFrame_Type)
 		{
-
-			Parse_RawEthernetFrames(Packet,indexOfThePacket);
+			Parse_RawEthernetFrames(Packet, indexOfThePacket);
 		}
-
-
 	}
 }
 
@@ -46,16 +42,40 @@ std::string Parser::GetType(std::string Packet)
 	}
 }
 
-RawEhternetFrame Parser::Parse_RawEthernetFrames(std::string Packet,int indexOfThePacket)
+RawEhternetFrame Parser::Parse_RawEthernetFrames(std::string Packet, int indexOfThePacket)
 {
 	RawEhternetFrame r;
-    REF[indexOfThePacket]= &r;
-	return RawEhternetFrame();
+	REF[indexOfThePacket] = &r;
+	return *REF[indexOfThePacket];
 }
 
-eCPRI Parser::Parse_eCPRI(std::string Packet ,int indexOfThePacket)
+eCPRI Parser::Parse_eCPRI(std::string Packet, int indexOfThePacket)
 {
 	eCPRI e;
-    REF[indexOfThePacket]= &e;
-	return eCPRI();
+	REF[indexOfThePacket] = &e;
+	std::string ProtocolVersion = Packet[Protocol_Version_Index] ;
+	std::string ConcatenationIndicator = Packet[Concatenation_Indicator_Index] ;
+	std::string MessageType = Packet[MessageTypeindex] + Packet[MessageTypeindex + 1];
+	std::string PayloadSize;
+	for (int i = 0; i < PayloadSize_bits; i++)
+	{
+		PayloadSize += Packet[i];
+	}
+	std::string RTC_ID;
+	for (int i = 0; i < RTC_IDSize_bits; i++)
+	{
+		RTC_IDSize += Packet[i];
+	}
+		std::string Sequence_ID;
+	for (int i = 0; i < Sequence_ID_bits; i++)
+	{
+		Sequence_ID += Packet[i];
+	}
+	REF[indexOfThePacket].SetProtocolVersion(ProtocolVersion);
+	REF[indexOfThePacket].SetConcatenationIndicator(ConcatenationIndicator);
+	REF[indexOfThePacket].SetMessageType(MessageType);
+	REF[indexOfThePacket].SetPayloadSize(PayloadSize);
+	REF[indexOfThePacket].SetRTC_ID(RTC_ID);
+	REF[indexOfThePacket].SetSequence_ID(Sequence_ID);
+	return *REF[indexOfThePacket];
 }
