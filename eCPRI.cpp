@@ -51,7 +51,7 @@ std::string eCPRI::GetRTC_ID()
 
 void eCPRI::SetRTC_ID(std::string RTC_ID)
 {
-	this.RTC_ID = RTC_ID;
+	this->RTC_ID = RTC_ID;
 }
 
 std::string eCPRI::GetSequence_ID()

@@ -1,4 +1,5 @@
 #pragma once
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -7,6 +8,8 @@
 #include "Reader.h"
 #include "RawEthernetFrame.h"
 #include "eCPRI.h"
+using namespace std;
+
 #define TypeIndexOne   40
 #define TypeIndexTwo   41
 #define TypeIndexThree 42
@@ -15,13 +18,19 @@
 #define RawEhternetFrame_Type  "88F7"
 #define Protocol_Version_Index 44
 #define Concatenation_Indicator_Index 45
-#define MessageTypeIndexs 46
+#define MessageTypeIndex 46
 #define PayloadSizeInext 48
 #define PayloadSize_bits 4
 #define RTC_IDSizeInext 52
 #define RTC_IDSize_bits 4
 #define Sequence_IDInext 56
 #define Sequence_ID_bits 4
+#define CRC_bits 8
+#define Destination_Address_index 16
+#define Destination_Address_bits 12
+#define Source_Address_index 28
+#define Source_Address_bits 12
+
 
 
 const std::vector<int> TypeIndecies{ TypeIndexOne , TypeIndexTwo , TypeIndexThree ,TypeIndexFour };
@@ -31,7 +40,8 @@ private:
 	Reader Data;
 	std::string Type;
 	int NumberOfPackets;
-	std::vector<RawEhternetFrame *> REF;
+	//std::vector<RawEhternetFrame *> REF;
+	RawEhternetFrame* REF[100];
 public:
 	Parser(Reader Data );
 	void Parse();

@@ -6,11 +6,12 @@ RawEhternetFrame::RawEhternetFrame()
 
 std::string RawEhternetFrame::GetCRC()
 {
-	return std::string();
+	return CRC;
 }
 
-void RawEhternetFrame::SetCRC()
+void RawEhternetFrame::SetCRC(std::string CRC)
 {
+	this->CRC = CRC;
 }
 
 std::string RawEhternetFrame::GetPreamble()
@@ -18,8 +19,9 @@ std::string RawEhternetFrame::GetPreamble()
 	return std::string();
 }
 
-void RawEhternetFrame::SetPreamble()
+void RawEhternetFrame::SetPreamble(std::string Preamble)
 {
+	this->Preamble = Preamble;
 }
 
 std::string RawEhternetFrame::GetDestinationAddress()
@@ -27,8 +29,9 @@ std::string RawEhternetFrame::GetDestinationAddress()
 	return std::string();
 }
 
-void RawEhternetFrame::SetDestinationAddress()
+void RawEhternetFrame::SetDestinationAddress(std::string DestinationAddress)
 {
+	this->DestinationAddress = DestinationAddress;
 }
 
 std::string RawEhternetFrame::GetSourceAddress()
@@ -36,8 +39,9 @@ std::string RawEhternetFrame::GetSourceAddress()
 	return std::string();
 }
 
-void RawEhternetFrame::SetSourceAddress()
+void RawEhternetFrame::SetSourceAddress(std::string SourceAddress)
 {
+	this->SourceAddress = SourceAddress;
 }
 
 std::string RawEhternetFrame::GetPayload()
@@ -45,8 +49,9 @@ std::string RawEhternetFrame::GetPayload()
 	return std::string();
 }
 
-void RawEhternetFrame::SetPayload()
+void RawEhternetFrame::SetPayload(std::string Payload)
 {
+	this->Payload = Payload;
 }
 
 std::string RawEhternetFrame::GetType()
@@ -54,6 +59,7 @@ std::string RawEhternetFrame::GetType()
 	return std::string();
 }
 
-void RawEhternetFrame::SetType()
+void RawEhternetFrame::SetType(std::string Type)
 {
+	this->Type = Type;
 }

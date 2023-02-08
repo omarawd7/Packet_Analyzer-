@@ -1,4 +1,5 @@
 #pragma once
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -13,7 +14,6 @@ private:
 public:
 	std::vector<std::string> read(std::string Path);
 	std::vector<std::string> GetInput();
-
 
 	int NumberOfPackets = Input.size();
 	std::vector<std::string> Input;

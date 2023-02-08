@@ -1,4 +1,5 @@
 #pragma once
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -17,17 +18,17 @@ protected:
 public:
     RawEhternetFrame();
 	std::string GetCRC();
-	void SetCRC();
+	void SetCRC(std::string CRC);
 	std::string GetPreamble();
-	void SetPreamble();
+	void SetPreamble(std::string Preamble);
 	std::string GetDestinationAddress();
-	void SetDestinationAddress();
+	void SetDestinationAddress(std::string DestinationAddress);
 	std::string GetSourceAddress();
-	void SetSourceAddress();
+	void SetSourceAddress(std::string SourceAddress);
 	std::string GetPayload();
-	void SetPayload();
+	void SetPayload(std::string Payload);
 	std::string GetType();
-	void SetType();
+	void SetType(std::string Type);
 
 	std::string Type;
 
